@@ -1,0 +1,240 @@
+{
+  "type": "FeatureCollection",
+  "name": "cityline_2025",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::4326"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "name": "Vatnsendi",
+        "line": "red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-21.809656537728188, 64.08563878170261]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2,
+        "name": "Salir",
+        "line": "red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-21.843744062745035, 64.08960383362172]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3,
+        "name": "Lindir",
+        "line": "red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-21.870297863974, 64.09939153426374]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4,
+        "name": "Smáralind",
+        "line": "red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-21.885215473891095, 64.10305684743491]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5,
+        "name": "Hamraborg",
+        "line": "red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-21.907297863974, 64.11205684743491]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6,
+        "name": "Sundlaug Kópavogs",
+        "line": "red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-21.917297863974, 64.11215684743491]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7,
+        "name": "Bakkabraut",
+        "line": "red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-21.937297863974, 64.11805684743491]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8,
+        "name": "HR",
+        "line": "red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-21.929497863974, 64.12305684743491]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9,
+        "name": "Landspítalinn",
+        "line": "red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-21.929197863974, 64.13805684743491]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 10,
+        "name": "BSÍ",
+        "line": "red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-21.934197863974, 64.13885684743491]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 11,
+        "name": "HÍ",
+        "line": "red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-21.944497863974, 64.14205684743491]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12,
+        "name": "Lækjartorg",
+        "line": "red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-21.933697863974, 64.14705684743491]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 13,
+        "name": "Egilshöll",
+        "line": "blue"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-21.772297863974, 64.14665684743491]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 14,
+        "name": "Spöngin",
+        "line": "blue"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-21.790297863974, 64.14965684743491]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 16,
+        "name": "Krossmýrartorg",
+        "line": "blue"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-21.824297863974, 64.12965684743491]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 15,
+        "name": "Vogabyggð",
+        "line": "blue"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-21.861297863974, 64.13165684743491]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 17,
+        "name": "Laugardalur",
+        "line": "blue"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-21.882097863974, 64.13965684743491]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 18,
+        "name": "Hátún",
+        "line": "blue"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-21.902297863974, 64.14165684743491]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 19,
+        "name": "Hlemmur",
+        "line": "blue"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-21.912497863974, 64.14265684743491]
+      }
+    }
+  ]
+}
