@@ -1,0 +1,297 @@
+{
+  "type": "FeatureCollection",
+  "name": "cityline_2025",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::4326"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "name": "Vatnsendi",
+        "line": "red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -21.809656537728184,
+          64.08563878170261
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2,
+        "name": "Salir",
+        "line": "red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -21.84374406274503,
+          64.08960383362172
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3,
+        "name": "Lindir",
+        "line": "red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -21.870826166122857,
+          64.09886013163094
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4,
+        "name": "Sm\u00e1ralind",
+        "line": "red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -21.88593318977579,
+          64.10256178882854
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5,
+        "name": "Hamraborg",
+        "line": "red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -21.90837264686027,
+          64.1110898195906
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6,
+        "name": "Sundlaug K\u00f3pavogs",
+        "line": "red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -21.91850540662748,
+          64.11118634836693
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7,
+        "name": "Bakkabraut",
+        "line": "red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -21.939618393342432,
+          64.1170418007092
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8,
+        "name": "HR",
+        "line": "red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -21.931843803121048,
+          64.12238141279147
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9,
+        "name": "Landsp\u00edtalinn",
+        "line": "red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -21.931475339129513,
+          64.13805657429226
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 10,
+        "name": "BS\u00cd",
+        "line": "red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -21.936523295813547,
+          64.13882804616311
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 11,
+        "name": "H\u00cd",
+        "line": "red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -21.946941615174197,
+          64.14227128171937
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12,
+        "name": "L\u00e6kjartorg",
+        "line": "red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -21.935942965026882,
+          64.1476421981253
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 13,
+        "name": "Egilsh\u00f6ll",
+        "line": "blue"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -21.772510761581547,
+          64.14712403232718
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 14,
+        "name": "Sp\u00f6ngin",
+        "line": "blue"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -21.790860268359996,
+          64.1500079640408
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 16,
+        "name": "Krossm\u00fdrartorg",
+        "line": "blue"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -21.82503990937478,
+          64.12874297721763
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 15,
+        "name": "Vogabygg\u00f0",
+        "line": "blue"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -21.862918007704575,
+          64.13059187917774
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 17,
+        "name": "Laugardalur",
+        "line": "blue"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -21.883036141642386,
+          64.14018811495119
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 18,
+        "name": "H\u00e1t\u00fan",
+        "line": "blue"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -21.90352273957173,
+          64.14235765845228
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 19,
+        "name": "Hlemmur",
+        "line": "blue"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -21.91395027053217,
+          64.14332184560375
+        ]
+      }
+    }
+  ]
+}
