@@ -8,8 +8,8 @@ def create_zone_map():
     # Get the absolute path
     current_dir = os.path.dirname(os.path.abspath(__file__))
     parent_dir = os.path.dirname(current_dir)
-    geojson_path = os.path.join(parent_dir, 'data', 'smasvaedi_2021.json')
-    
+    geojson_path = os.path.join(parent_dir, 'data/processed/geo', 'capital.json')
+
     # Debug: Print the path
     print(f"Looking for file at: {geojson_path}")
     
