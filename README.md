@@ -42,11 +42,10 @@ We're working with four primary datasets:
 
 ## 🎨 Visualizations
 [Links to your key visualizations/maps]
-[img](/output/map.png)
+![img](/output/map.png)
 
 Or download the html file here 
 
-```
 ## 🙏 Acknowledgments
 
 Special thanks to:
