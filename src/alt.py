@@ -139,7 +139,7 @@ def create_population_map():
 if __name__ == "__main__":
     try:
         map_zones = create_population_map()
-        map_zones.save('population_map.html')
+        map_zones.save('output/population_map.html')
         print("Population map successfully created and saved as 'population_map.html'")
     except Exception as e:
         print(f"Failed to create map: {str(e)}")

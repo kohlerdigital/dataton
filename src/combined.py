@@ -212,7 +212,7 @@ def create_combined_map():
 if __name__ == "__main__":
     try:
         combined_map = create_combined_map()
-        combined_map.save('combined_map.html')
+        combined_map.save('output/combined_map.html')
         print("Combined map successfully created and saved as 'combined_map.html'")
     except Exception as e:
         print(f"Failed to create map: {e}")
