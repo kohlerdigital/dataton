@@ -171,38 +171,44 @@ def create_combined_map():
             caption=f'Population ({max_year})'
         )
         
-        # Add population choropleth
-        population_layer = folium.FeatureGroup(name='Population Density')
+        # Create a feature group for the smasvaedi layer
+        smasvaedi_layer = folium.FeatureGroup(name='Smásvæði (Small Areas)', show=True)
+        
+        # Add GeoJson to the feature group with improved styling
         folium.GeoJson(
             gdf.to_json(),
+            name='Smásvæði',
             style_function=lambda feature: {
                 'fillColor': colormap(feature['properties']['fjoldi']) 
                     if feature['properties'].get('fjoldi') is not None 
                     else '#CCCCCC',
                 'color': 'black',
                 'weight': 1,
-                'fillOpacity': 0.2
+                'fillOpacity': 0.7
             },
+            highlight_function=lambda x: {'weight': 3, 'fillOpacity': 0.9},
             tooltip=folium.GeoJsonTooltip(
                 fields=['smsv_label', 'fjoldi'],
                 aliases=['Zone:', 'Population:'],
                 localize=True,
                 sticky=True
             )
-        ).add_to(population_layer)
+        ).add_to(smasvaedi_layer)
         
-        # Add layers to map in correct order
-        population_layer.add_to(m)
-        colormap.add_to(m)
+        # Add colormap to the smasvaedi layer
+        colormap.add_to(smasvaedi_layer)
         
-        # Add bus routes and stops first (removed show_labels parameter)
+        # Add bus routes and stops
         m = straeto.add_bus_layer(m, show_stops=True, show_routes=True)
         
         # Add Borgarlína on top
         m = add_borgarlina_lines(m)
         
-        # Add layer control
-        folium.LayerControl().add_to(m)
+        # Add smasvaedi layer last to ensure it's on top
+        smasvaedi_layer.add_to(m)
+        
+        # Add layer control with expanded view
+        folium.LayerControl(collapsed=False).add_to(m)
         
         return m
     except Exception as e:
