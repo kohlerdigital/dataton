@@ -3,8 +3,10 @@ import geopandas as gpd
 import os
 from pathlib import Path
 import fiona
-from shapely.geometry import shape, Point
+from shapely.geometry import shape, Point, Polygon
 from functools import lru_cache
+from geopy.distance import geodesic
+import numpy as np
 
 class DataLoader:
     def __init__(self):
@@ -163,8 +165,36 @@ class DataLoader:
         """Generate a cache key for affected areas"""
         return f"{point.wkt}_{radius}"
 
+    def _create_geodesic_circle(self, center: Point, radius_meters: float, num_points: int = 64) -> Polygon:
+        """
+        Create a circular polygon using geodesic distances.
+        
+        Args:
+            center (Point): Center point of the circle
+            radius_meters (float): Radius in meters
+            num_points (int): Number of points to use for the circle approximation
+        
+        Returns:
+            Polygon: A circular polygon using geodesic distances
+        """
+        angles = np.linspace(0, 360, num_points)
+        circle_points = []
+        
+        for angle in angles:
+            # Calculate destination point given distance and bearing
+            point = geodesic().destination(
+                point=(center.y, center.x),  # geodesic expects (lat, lon)
+                bearing=angle,
+                distance=radius_meters
+            )
+            circle_points.append((point.longitude, point.latitude))
+        
+        # Close the polygon
+        circle_points.append(circle_points[0])
+        return Polygon(circle_points)
+
     def get_areas_within_radius(self, point, radius, small_areas=None):
-        """Get all small areas within radius of a point"""
+        """Get all small areas within radius of a point using geodesic distances"""
         try:
             # Check cache first
             cache_key = self._get_cache_key(point, radius)
@@ -174,8 +204,8 @@ class DataLoader:
             if small_areas is None:
                 small_areas = self.load_small_areas()
             
-            # Create a buffer around the point
-            point_buffer = point.buffer(radius / 111000)  # Convert meters to approximate degrees
+            # Create a geodesic buffer around the point
+            point_buffer = self._create_geodesic_circle(point, radius)
             
             # Find all areas that intersect with the buffer
             intersecting_areas = small_areas[small_areas.intersects(point_buffer)].copy()

@@ -20,6 +20,23 @@ class LayerControls:
         ], style={'marginBottom': '20px'})
 
     @staticmethod
+    def create_age_group_selector():
+        """Create age group selection dropdown"""
+        return html.Div([
+            html.Label('Select Age Group:', style={'fontWeight': 'bold', 'marginBottom': '10px'}),
+            dcc.Dropdown(
+                id='age-group-selector',
+                options=[
+                    {'label': '10-14 ára', 'value': '10-14'},
+                    {'label': '15-19 ára', 'value': '15-19'},
+                    {'label': '20-24 ára', 'value': '20-24'}
+                ],
+                value='10-14',
+                clearable=False
+            )
+        ], style={'marginBottom': '20px'})
+
+    @staticmethod
     def create_radius_slider():
         """Create radius control slider"""
         return html.Div([
@@ -90,7 +107,9 @@ class LayerControls:
                     'backgroundColor': '#f8f9fa',
                     'borderRadius': '5px',
                     'border': '1px solid #dee2e6',
-                    'whiteSpace': 'pre-line'  # This will preserve line breaks
+                    'whiteSpace': 'pre-line',  # Preserve line breaks
+                    'maxHeight': '300px',      # Add max height
+                    'overflowY': 'auto'        # Add scrolling if content is too long
                 })
             ], style={
                 'padding': '20px',
@@ -113,6 +132,7 @@ class LayerControls:
             html.Div([
                 html.H3('Controls', style={'marginBottom': '20px', 'color': '#2c3e50'}),
                 LayerControls.create_year_selector(),
+                LayerControls.create_age_group_selector(),
                 LayerControls.create_radius_slider(),
                 LayerControls.create_layer_toggles()
             ], style={

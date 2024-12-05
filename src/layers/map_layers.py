@@ -3,6 +3,7 @@ import plotly.express as px
 import json
 import numpy as np
 from shapely.geometry import Point, LineString
+from src.data_processing.age_groups import calculate_age_group_percentages, format_age_group_info
 
 class MapLayers:
     def __init__(self):
@@ -28,7 +29,7 @@ class MapLayers:
                        'Bakkabraut', 'HR', 'Landspítalinn', 'BSÍ', 'HÍ', 'Lækjartorg'],
                 'blue': ['Egilshöll', 'Spöngin', 'Krossmýrartorg', 'Vogabyggð', 'Laugardalur', 
                         'Hátún', 'Hlemmur', 'HÍ', 'BSÍ', 'Lækjartorg'],
-                'green': ['Fell', 'Salir', 'Mjódd', 'Vogabyggð', 'Kringlan', 'Landspítalinn', 
+                'green': ['Salir', 'Fell', 'Mjódd', 'Vogabyggð', 'Kringlan', 'Landspítalinn', 
                          'BSÍ', 'HÍ', 'Eiðistorg'],
                 'orange': ['Norðlingaholt', 'Árbær', 'Kringlan', 'Landspítalinn', 'BSÍ', 
                           'HÍ', 'Lækjartorg', 'Grandi']
@@ -38,7 +39,7 @@ class MapLayers:
                        'Bakkabraut', 'HR', 'Landspítalinn', 'BSÍ', 'HÍ', 'Lækjartorg'],
                 'blue': ['Egilshöll', 'Spöngin', 'Krossmýrartorg', 'Vogabyggð', 'Laugardalur', 
                         'Hátún', 'Hlemmur', 'HÍ', 'BSÍ', 'Lækjartorg'],
-                'green': ['Fell', 'Salir', 'Mjódd', 'Vogabyggð', 'Kringlan', 'Landspítalinn', 
+                'green': ['Salir', 'Fell', 'Mjódd', 'Vogabyggð', 'Kringlan', 'Landspítalinn', 
                          'BSÍ', 'HÍ', 'Eiðistorg'],
                 'orange': ['Norðlingaholt', 'Árbær', 'Kringlan', 'Landspítalinn', 'BSÍ', 
                           'HÍ', 'Lækjartorg', 'Grandi'],
@@ -46,6 +47,19 @@ class MapLayers:
                           'Hlemmur', 'BSÍ', 'HÍ', 'Lækjartorg']
             }
         }
+
+    def get_polygon_coordinates(self, geometry):
+        """Extract coordinates from a geometry object, handling Point, Polygon, and MultiPolygon types"""
+        if geometry.geom_type == 'Point':
+            return list(geometry.coords)[0]
+        elif geometry.geom_type == 'Polygon':
+            return list(geometry.exterior.coords)
+        elif geometry.geom_type == 'MultiPolygon':
+            # For MultiPolygon, use the largest polygon's coordinates
+            largest_polygon = max(geometry.geoms, key=lambda p: p.area)
+            return list(largest_polygon.exterior.coords)
+        else:
+            raise ValueError(f"Unsupported geometry type: {geometry.geom_type}")
 
     def create_base_map(self):
         """Create the base map with initial settings"""
@@ -91,7 +105,7 @@ class MapLayers:
             traceback.print_exc()
         return fig
 
-    def add_cityline_layer(self, fig, geojson_data, year='2025'):
+    def add_cityline_layer(self, fig, geojson_data, small_areas_data=None, year='2025'):
         """Add cityline layer to the map"""
         try:
             if geojson_data.empty:
@@ -99,10 +113,12 @@ class MapLayers:
 
             station_coords = {}
             for _, station in geojson_data.iterrows():
-                station_coords[station['name']] = list(station.geometry.coords)[0]
+                coords = list(station.geometry.coords)[0]
+                station_coords[station['name']] = coords
 
             year_sequences = self.line_sequences.get(year, self.line_sequences['2025'])
 
+            # Add lines first (so they appear under stations)
             for line_color, sequence in year_sequences.items():
                 valid_sequence = [s for s in sequence if s in station_coords]
                 
@@ -119,14 +135,17 @@ class MapLayers:
                         showlegend=True
                     ))
 
+            # Then add stations on top
             for _, station in geojson_data.iterrows():
                 coords = list(station.geometry.coords)[0]
                 lines = station['line'].split('/')
                 size = 15 if len(lines) > 1 else 10
                 color = self.line_colors[lines[0]]
+                station_name = station['name']
                 
+                # Add station marker
                 fig.add_trace(go.Scattermapbox(
-                    mode="markers",
+                    mode="markers+text",
                     lon=[coords[0]],
                     lat=[coords[1]],
                     marker=dict(
@@ -134,12 +153,18 @@ class MapLayers:
                         color=color,
                         opacity=0.8
                     ),
-                    text=station['name'],
-                    name=station['name'],
-                    hoverinfo="text",
-                    hoverlabel=dict(bgcolor="white"),
-                    showlegend=False,
-                    customdata=[{'name': station['name'], 'line': station['line']}]
+                    text=[station_name],
+                    textposition="top center",
+                    name=station_name,
+                    customdata=[{
+                        'name': station_name,
+                        'line': station['line']
+                    }],
+                    hovertemplate=(
+                        "<b>%{text}</b><br>" +
+                        "<br>Click for details<extra></extra>"
+                    ),
+                    showlegend=False
                 ))
 
         except Exception as e:
