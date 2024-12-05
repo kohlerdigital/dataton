@@ -4,6 +4,7 @@ import json
 import numpy as np
 from shapely.geometry import Point, LineString
 from src.data_processing.age_groups import calculate_age_group_percentages, format_age_group_info
+from src.layers.straeto_layer import add_straeto_layer
 
 class MapLayers:
     def __init__(self):

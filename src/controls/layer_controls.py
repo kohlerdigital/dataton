@@ -71,7 +71,8 @@ class LayerControls:
                     {'label': ' Coverage Areas', 'value': 'coverage'},
                     {'label': ' Population Density', 'value': 'density'},
                     {'label': ' Small Areas (Smásvæði)', 'value': 'smasvaedi'},
-                    {'label': ' Schools', 'value': 'schools'}
+                    {'label': ' Schools', 'value': 'schools'},
+                    {'label': ' Stræto', 'value': 'straeto'}  # Added Stræto layer toggle
                 ],
                 value=['cityline'],  # Default to showing only cityline
                 persistence=True,

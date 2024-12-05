@@ -28,7 +28,7 @@ app.layout = html.Div([
                 style={'height': '100vh', 'width': '100%'},
                 figure=map_layers.create_base_map(),
                 config={'displayModeBar': True}
-            ),
+            )
         ], style={
             'height': '100vh',
             'width': '100%',
@@ -315,10 +315,15 @@ def update_map(selected_year, radius, active_layers, selected_station, affected_
         if not active_layers or 'cityline' in active_layers:  # Show cityline by default if no layers selected
             fig = map_layers.add_cityline_layer(fig, cityline_data, None, selected_year)
         
-        # 5. Add schools last if enabled
+        # 5. Add schools if enabled
         if active_layers and 'schools' in active_layers:
             schools_data = data_loader.load_schools_data()
             fig = map_layers.add_schools_layer(fig, schools_data)
+            
+        # 6. Add stræto layer if enabled
+        if active_layers and 'straeto' in active_layers:
+            from src.layers.straeto_layer import add_straeto_layer
+            fig = add_straeto_layer(fig)
         
         # Preserve interactive state
         fig.update_layout(uirevision=True)
